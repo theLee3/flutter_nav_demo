@@ -69,11 +69,6 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
       case '/recipe':
         child = RecipePage(routeSettings.arguments);
         break;
-      default:
-        child = Scaffold(
-          appBar: AppBar(title: Text('404')),
-          body: Center(child: Text('Page not found')),
-        );
     }
 
     return MaterialPage(
