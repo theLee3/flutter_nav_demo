@@ -36,6 +36,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
   }
 
   bool _onPopPage(Route route, dynamic result) {
+    print(!route.didPop(result));
     if (!route.didPop(result)) return false;
 
     popRoute();

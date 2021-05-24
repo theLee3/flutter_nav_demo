@@ -25,65 +25,91 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Navigator 2.0 Demo'),
-        leading: _cocktails != null
-            ? IconButton(
-                icon: Icon(kIsWeb || Platform.isIOS
-                    ? Icons.arrow_back_ios
-                    : Icons.arrow_back),
-                onPressed: () => setState(() => _cocktails = null),
-              )
-            : null,
-      ),
-      body: _cocktails == null
-          ? ListView.builder(
-              itemCount: _categories.length,
-              itemBuilder: (context, index) => ListTile(
-                    title: Text(_categories[index]),
-                    onTap: () {
-                      Api.fetchCocktails(_categories[index]).then((cocktails) =>
-                          setState(() => _cocktails = cocktails));
-                    },
-                  ))
-          : GridView.builder(
-              itemCount: _cocktails.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 1.0),
-              itemBuilder: (context, index) => InkWell(
-                child: Stack(
-                  children: [
-                    Image.network(_cocktails[index].thumbUrl,
-                        fit: BoxFit.fitWidth),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10.0),
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          padding: const EdgeInsets.all(4.0),
-                          decoration: ShapeDecoration(
-                            color: Colors.black45,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Navigator 2.0 Demo'),
+          leading: _cocktails != null
+              ? IconButton(
+                  icon: Icon(kIsWeb || Platform.isIOS
+                      ? Icons.arrow_back_ios
+                      : Icons.arrow_back),
+                  onPressed: () => setState(() => _cocktails = null),
+                )
+              : null,
+        ),
+        body: _cocktails == null
+            ? ListView.builder(
+                itemCount: _categories.length,
+                itemBuilder: (context, index) => ListTile(
+                      title: Text(_categories[index]),
+                      onTap: () {
+                        Api.fetchCocktails(_categories[index]).then(
+                            (cocktails) =>
+                                setState(() => _cocktails = cocktails));
+                      },
+                    ))
+            : GridView.builder(
+                itemCount: _cocktails.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, childAspectRatio: 1.0),
+                itemBuilder: (context, index) => InkWell(
+                  child: Stack(
+                    children: [
+                      Image.network(_cocktails[index].thumbUrl,
+                          fit: BoxFit.fitWidth),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0),
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            padding: const EdgeInsets.all(4.0),
+                            decoration: ShapeDecoration(
+                              color: Colors.black45,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                            ),
+                            child: FittedBox(
+                                child: Text(
+                              _cocktails[index].name,
+                              style: TextStyle(color: Colors.white),
+                            )),
                           ),
-                          child: FittedBox(
-                              child: Text(
-                            _cocktails[index].name,
-                            style: TextStyle(color: Colors.white),
-                          )),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return RecipePage(_cocktails[index].id);
+                    }));
+                  },
                 ),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return RecipePage(_cocktails[index].id);
-                  }));
-                },
               ),
-            ),
+      ),
     );
+  }
+
+  Future<bool> _onWillPop() {
+    return showDialog<bool>(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Exit App'),
+            content: const Text('Are you sure you want to exit the app?'),
+            actions: [
+              TextButton(
+                child: const Text('Cancel'),
+                onPressed: () => Navigator.pop(context, false),
+              ),
+              TextButton(
+                child: const Text('Confirm'),
+                onPressed: () => Navigator.pop(context, true),
+              ),
+            ],
+          );
+        });
   }
 }

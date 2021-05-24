@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Router(
         routerDelegate: routerDelegate,
+        backButtonDispatcher: RootBackButtonDispatcher(),
       ),
     );
   }
