@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   final routerDelegate = Get.put(MyRouterDelegate());
 
   MyApp() {
-    routerDelegate.setNewRoutePath([RouteSettings(name: '/')]);
+    routerDelegate.pushPage(name: '/');
   }
 
   @override

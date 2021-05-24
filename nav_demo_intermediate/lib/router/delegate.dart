@@ -32,9 +32,6 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
 
   @override
   Future<void> setNewRoutePath(List<RouteSettings> configuration) {
-    _setPath(configuration
-        .map((routeSettings) => _createPage(routeSettings))
-        .toList());
     return Future.value(null);
   }
 
@@ -43,15 +40,6 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
 
     popRoute();
     return true;
-  }
-
-  void _setPath(List<Page> pages) {
-    _pages.clear();
-    _pages.addAll(pages);
-
-    if (_pages.first.name == '/recipe')
-      _pages.insert(0, _createPage(RouteSettings(name: '/')));
-    notifyListeners();
   }
 
   void pushPage({@required String name, dynamic arguments}) {
