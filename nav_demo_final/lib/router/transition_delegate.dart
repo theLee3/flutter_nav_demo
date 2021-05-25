@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MyTransitionDelegate<T> extends TransitionDelegate<T> {
+class MyTransitionDelegate extends TransitionDelegate {
   /// Creates a default transition delegate.
   const MyTransitionDelegate() : super();
 
