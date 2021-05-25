@@ -20,7 +20,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
       key: navigatorKey,
       pages: List.of(_pages),
       onPopPage: _onPopPage,
-      transitionDelegate: MyTransitionDelegate(),
+      transitionDelegate: const MyTransitionDelegate(),
     );
   }
 
