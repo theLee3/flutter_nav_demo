@@ -3,9 +3,9 @@ import '../models/cocktail.dart';
 import '../services/api.dart';
 
 class RecipePage extends StatefulWidget {
-  final _arguments;
+  final _id;
 
-  RecipePage(this._arguments);
+  RecipePage(this._id);
 
   @override
   _RecipePageState createState() => _RecipePageState();
@@ -16,7 +16,7 @@ class _RecipePageState extends State<RecipePage> {
 
   @override
   void initState() {
-    Api.fetchRecipe(widget._arguments['id'])
+    Api.fetchRecipe(widget._id)
         .then((cocktail) => setState(() => _cocktail = cocktail));
     super.initState();
   }

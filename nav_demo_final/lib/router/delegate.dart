@@ -54,7 +54,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
     _pages.clear();
     _pages.addAll(pages);
 
-    if (_pages.first.name == '/recipe')
+    if (_pages.first.name != '/')
       _pages.insert(0, _createPage(RouteSettings(name: '/')));
     notifyListeners();
   }
