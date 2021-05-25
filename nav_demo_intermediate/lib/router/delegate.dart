@@ -31,9 +31,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
   }
 
   @override
-  Future<void> setNewRoutePath(List<RouteSettings> configuration) {
-    return Future.value(null);
-  }
+  Future<void> setNewRoutePath(List<RouteSettings> configuration) async {}
 
   bool _onPopPage(Route route, dynamic result) {
     if (!route.didPop(result)) return false;
