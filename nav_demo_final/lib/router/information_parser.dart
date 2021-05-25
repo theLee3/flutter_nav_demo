@@ -35,6 +35,6 @@ class MyRouteInformationParser
   String _restoreArguments(RouteSettings routeSettings) {
     if (routeSettings.name != '/recipe') return '';
 
-    return '?id=${routeSettings.arguments}';
+    return '?id=${(routeSettings.arguments as Map)['id'].toString()}';
   }
 }

@@ -81,7 +81,11 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 onTap: () => routerDelegate.pushPage(
-                    name: '/recipe', arguments: _cocktails[index].id),
+                  name: '/recipe',
+                  arguments: {
+                    'id': _cocktails[index].id,
+                  },
+                ),
               ),
             ),
     );
