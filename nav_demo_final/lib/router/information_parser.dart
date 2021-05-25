@@ -9,13 +9,15 @@ class MyRouteInformationParser
       RouteInformation routeInformation) {
     final uri = Uri.parse(routeInformation.location);
 
-    final pathSegments = uri.pathSegments.isNotEmpty ? uri.pathSegments : [''];
-    final parameters = uri.queryParameters;
+    if (uri.pathSegments.isEmpty)
+      return Future.value([RouteSettings(name: '/')]);
 
-    final routeSettings = pathSegments
+    final routeSettings = uri.pathSegments
         .map((pathSegment) => RouteSettings(
               name: '/$pathSegment',
-              arguments: pathSegment == pathSegments.last ? parameters : null,
+              arguments: pathSegment == uri.pathSegments.last
+                  ? uri.queryParameters
+                  : null,
             ))
         .toList();
 
