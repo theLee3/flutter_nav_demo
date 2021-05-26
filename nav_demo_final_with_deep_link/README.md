@@ -1,0 +1,3 @@
+# nav_demo_final_with_deep_link
+
+This is a minimal working example of Flutter's updated (declarative) navigation and routing mechanism. This example demonstrates how we can leverage the `Router`, `Page`, and `RouterInformationParser` classes to create an app that behaves as expected across mobile, desktop, and web. In addition, this app uses the uni_links plugin to implement Deep Links (Android) and Custom URL schemes (iOS).

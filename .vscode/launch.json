@@ -21,6 +21,12 @@
             "request": "launch",
             "type": "dart",
             "program": "nav_demo_final/lib/main.dart"
+        },
+        {
+            "name": "nav_demo_final_with_deep_link",
+            "request": "launch",
+            "type": "dart",
+            "program": "nav_demo_final_with_deep_link/lib/main.dart"
         }
     ]
 }
