@@ -18,7 +18,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final routerDelegate = Get.put(MyRouterDelegate());
-  final routeInformationParser = const MyRouteInformationParser();
 
   StreamSubscription _linkSubscription;
 
@@ -63,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       routerDelegate: routerDelegate,
-      routeInformationParser: routeInformationParser,
+      routeInformationParser: const MyRouteInformationParser(),
     );
   }
 }
