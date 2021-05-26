@@ -37,9 +37,6 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
 
   @override
   Future<void> setNewRoutePath(List<RouteSettings> configuration) {
-    // configuration.forEach((element) {
-    //   print(element.name);
-    // });
     _setPath(configuration
         .map((routeSettings) => _createPage(routeSettings))
         .toList());
@@ -47,7 +44,6 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
   }
 
   void parseRoute(Uri uri) {
-    // print(uri);
     if (uri.pathSegments.isEmpty) {
       setNewRoutePath([RouteSettings(name: '/')]);
     } else {
@@ -70,9 +66,6 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
   }
 
   void _setPath(List<Page> pages) {
-    // pages.forEach((element) {
-    //   print(element.name);
-    // });
     _pages.clear();
     _pages.addAll(pages);
 
