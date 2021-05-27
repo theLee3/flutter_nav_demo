@@ -9,6 +9,7 @@ This is an example app demonstrating the use of Flutter's updated (declarative) 
 
 ### Corresponding Tutorial Articles
 [Part 1 - The Basics](https://lp3.medium.com/a-simpler-guide-to-flutter-navigator-2-0-part-i-70623cedc93b)
+
 [Part 2 - A Better Approach for Web](https://lp3.medium.com/a-simpler-guide-to-flutter-navigator-2-0-part-ii-cf294d9dbe)
 
 [Part 3 - Deep Linking](https://lp3.medium.com/a-simpler-guide-to-flutter-navigator-2-0-part-iii-800b59975263)
