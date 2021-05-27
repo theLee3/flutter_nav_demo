@@ -3,7 +3,7 @@
 This is an example app demonstrating the use of Flutter's updated (declarative) navigation and routing mechanism. The *starter* version of the app uses Flutter's old (imperative) navigation and routing mechanism. The *intermediate* version of the app implements the updated navigation, focusing on the mobile (or desktop) experience, neglecting the work needed to sync the url with the app for web. The *final* version provides an app that provides the best user experience across mobile, web, and desktop.
 
 
-### Update
+### Update (05/26/21)
 *Deep Link* (Android) and *Custom URL Scheme* (iOS) functionality has been added.
 
 
