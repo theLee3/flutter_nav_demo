@@ -98,7 +98,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
 
     return MaterialPage(
       child: child,
-      key: Key(routeSettings.hashCode.toString()),
+      key: Key(routeSettings.toString()),
       name: routeSettings.name,
       arguments: routeSettings.arguments,
     );
