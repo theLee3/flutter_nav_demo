@@ -38,8 +38,21 @@ class _RecipePageState extends State<RecipePage> {
                       pinned: true,
                       expandedHeight: 250.0,
                       flexibleSpace: FlexibleSpaceBar(
-                        background: Image.network(_cocktail.thumbUrl,
-                            fit: BoxFit.cover),
+                        background: DecoratedBox(
+                          position: DecorationPosition.foreground,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment(0.0, 0.25), // Alignment.center,
+                              colors: [
+                                Colors.black38,
+                                Colors.transparent,
+                              ],
+                            ),
+                          ),
+                          child: Image.network(_cocktail.thumbUrl,
+                              fit: BoxFit.cover),
+                        ),
                         title: Text(_cocktail.name),
                       ),
                     ),

@@ -57,25 +57,30 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) => InkWell(
                 child: Stack(
                   children: [
-                    Image.network(_cocktails[index].thumbUrl,
-                        fit: BoxFit.fitWidth),
+                    DecoratedBox(
+                      position: DecorationPosition.foreground,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment(0.0, 0.25),
+                          colors: [
+                            Colors.black38,
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                      child: Image.network(_cocktails[index].thumbUrl,
+                          fit: BoxFit.cover, scale: 0.5),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10.0),
                       child: Align(
                         alignment: Alignment.bottomCenter,
-                        child: Container(
-                          padding: const EdgeInsets.all(4.0),
-                          decoration: ShapeDecoration(
-                            color: Colors.black45,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
-                          ),
-                          child: FittedBox(
-                              child: Text(
-                            _cocktails[index].name,
-                            style: TextStyle(color: Colors.white),
-                          )),
-                        ),
+                        child: FittedBox(
+                            child: Text(
+                          _cocktails[index].name,
+                          style: TextStyle(color: Colors.white),
+                        )),
                       ),
                     ),
                   ],
