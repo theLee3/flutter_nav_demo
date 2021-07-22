@@ -9,8 +9,9 @@ class MyRouteInformationParser
       RouteInformation routeInformation) {
     final uri = Uri.parse(routeInformation.location);
 
-    if (uri.pathSegments.isEmpty)
-      return Future.value([RouteSettings(name: '/')]);
+    if (uri.pathSegments.isEmpty) {
+      return Future.value([const RouteSettings(name: '/')]);
+    }
 
     final routeSettings = uri.pathSegments
         .map((pathSegment) => RouteSettings(

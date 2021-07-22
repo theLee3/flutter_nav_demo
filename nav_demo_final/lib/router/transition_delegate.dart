@@ -16,7 +16,7 @@ class MyTransitionDelegate extends TransitionDelegate {
   }) {
     final List<RouteTransitionRecord> results = <RouteTransitionRecord>[];
 
-    final bool showAnimation = locationToExitingPageRoute.length == 0 ||
+    final bool showAnimation = locationToExitingPageRoute.isEmpty ||
         newPageRouteHistory.last.route.settings.name !=
             locationToExitingPageRoute.values.last.route.settings.name;
 
