@@ -36,8 +36,6 @@ abstract class Api {
 
     final cocktail = (jsonDecode(response.body)['drinks'] as List)?.first;
 
-    // if (cocktail == null) return Cocktail.notFound();
-
     return Cocktail.fromJson(cocktail);
   }
 }

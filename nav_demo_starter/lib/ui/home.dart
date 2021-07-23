@@ -7,6 +7,8 @@ import '../services/api.dart';
 import './recipe.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -29,10 +31,10 @@ class _HomePageState extends State<HomePage> {
       onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Navigator 2.0 Demo'),
+          title: const Text('Navigator 2.0 Demo'),
           leading: _cocktails != null
               ? IconButton(
-                  icon: Icon(kIsWeb || Platform.isIOS
+                  icon: const Icon(kIsWeb || Platform.isIOS
                       ? Icons.arrow_back_ios
                       : Icons.arrow_back),
                   onPressed: () => setState(() => _cocktails = null),
@@ -52,14 +54,14 @@ class _HomePageState extends State<HomePage> {
                     ))
             : GridView.builder(
                 itemCount: _cocktails.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, childAspectRatio: 1.0),
                 itemBuilder: (context, index) => InkWell(
                   child: Stack(
                     children: [
                       DecoratedBox(
                         position: DecorationPosition.foreground,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           gradient: LinearGradient(
                             begin: Alignment.bottomCenter,
                             end: Alignment(0.0, 0.25),
@@ -79,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                           child: FittedBox(
                               child: Text(
                             _cocktails[index].name,
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           )),
                         ),
                       ),

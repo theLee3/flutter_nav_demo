@@ -45,7 +45,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
 
   void parseRoute(Uri uri) {
     if (uri.pathSegments.isEmpty) {
-      setNewRoutePath([RouteSettings(name: '/')]);
+      setNewRoutePath([const RouteSettings(name: '/')]);
     } else {
       setNewRoutePath(uri.pathSegments
           .map((pathSegment) => RouteSettings(
@@ -69,8 +69,9 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
     _pages.clear();
     _pages.addAll(pages);
 
-    if (_pages.first.name != '/')
-      _pages.insert(0, _createPage(RouteSettings(name: '/')));
+    if (_pages.first.name != '/') {
+      _pages.insert(0, _createPage(const RouteSettings(name: '/')));
+    }
     notifyListeners();
   }
 
@@ -84,15 +85,15 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
 
     switch (routeSettings.name) {
       case '/':
-        child = HomePage();
+        child = const HomePage();
         break;
       case '/recipe':
         child = RecipePage(routeSettings.arguments);
         break;
       default:
         child = Scaffold(
-          appBar: AppBar(title: Text('404')),
-          body: Center(child: Text('Page not found')),
+          appBar: AppBar(title: const Text('404')),
+          body: const Center(child: Text('Page not found')),
         );
     }
 

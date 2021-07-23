@@ -50,7 +50,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
 
     switch (routeSettings.name) {
       case '/':
-        child = HomePage();
+        child = const HomePage();
         break;
       case '/recipe':
         child = RecipePage(routeSettings.arguments);

@@ -8,10 +8,12 @@ import './router/information_parser.dart';
 import './router/delegate.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }

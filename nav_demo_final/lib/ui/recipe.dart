@@ -3,9 +3,9 @@ import '../models/cocktail.dart';
 import '../services/api.dart';
 
 class RecipePage extends StatefulWidget {
-  final _arguments;
+  final Map<String, String> _arguments;
 
-  RecipePage(this._arguments);
+  const RecipePage(this._arguments, {Key key}) : super(key: key);
 
   @override
   _RecipePageState createState() => _RecipePageState();
@@ -26,12 +26,12 @@ class _RecipePageState extends State<RecipePage> {
     return Scaffold(
       appBar: _cocktail != null && _cocktail.id == '-1'
           ? AppBar(
-              title: Text('404'),
+              title: const Text('404'),
             )
           : null,
       body: _cocktail != null
           ? _cocktail.id == '-1'
-              ? Center(child: Text('Recipe not found.'))
+              ? const Center(child: Text('Recipe not found.'))
               : CustomScrollView(
                   slivers: [
                     SliverAppBar(
@@ -40,7 +40,7 @@ class _RecipePageState extends State<RecipePage> {
                       flexibleSpace: FlexibleSpaceBar(
                         background: DecoratedBox(
                           position: DecorationPosition.foreground,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               begin: Alignment.bottomCenter,
                               end: Alignment(0.0, 0.25), // Alignment.center,
@@ -56,9 +56,9 @@ class _RecipePageState extends State<RecipePage> {
                         title: Text(_cocktail.name),
                       ),
                     ),
-                    SliverToBoxAdapter(
+                    const SliverToBoxAdapter(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 12.0, top: 12.0),
+                        padding: EdgeInsets.only(left: 12.0, top: 12.0),
                         child: Text('Ingredients',
                             style: TextStyle(
                                 fontSize: 24.0, fontWeight: FontWeight.bold)),
@@ -77,9 +77,9 @@ class _RecipePageState extends State<RecipePage> {
                         childCount: _cocktail.ingredients.length,
                       ),
                     ),
-                    SliverToBoxAdapter(
+                    const SliverToBoxAdapter(
                       child: Padding(
-                        padding: const EdgeInsets.only(
+                        padding: EdgeInsets.only(
                             left: 12.0, top: 24.0, bottom: 12.0),
                         child: Text('Instructions',
                             style: TextStyle(
@@ -98,7 +98,7 @@ class _RecipePageState extends State<RecipePage> {
                     ),
                   ],
                 )
-          : Center(child: CircularProgressIndicator()),
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }
