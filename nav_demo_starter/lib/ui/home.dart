@@ -7,7 +7,7 @@ import '../services/api.dart';
 import './recipe.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<String> _categories = [];
-  List<Cocktail> _cocktails;
+  List<Cocktail>? _cocktails;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                       },
                     ))
             : GridView.builder(
-                itemCount: _cocktails.length,
+                itemCount: _cocktails!.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, childAspectRatio: 1.0),
                 itemBuilder: (context, index) => InkWell(
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ),
-                        child: Image.network(_cocktails[index].thumbUrl,
+                        child: Image.network(_cocktails![index].thumbUrl,
                             fit: BoxFit.cover, scale: 0.5),
                       ),
                       Padding(
@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                           alignment: Alignment.bottomCenter,
                           child: FittedBox(
                               child: Text(
-                            _cocktails[index].name,
+                            _cocktails![index].name,
                             style: const TextStyle(color: Colors.white),
                           )),
                         ),
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return RecipePage(_cocktails[index].id);
+                      return RecipePage(_cocktails![index].id);
                     }));
                   },
                 ),
@@ -99,8 +99,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Future<bool> _onWillPop() {
-    return showDialog<bool>(
+  Future<bool> _onWillPop() async {
+    final result = await showDialog<bool>(
         context: context,
         builder: (context) {
           return AlertDialog(
@@ -118,5 +118,7 @@ class _HomePageState extends State<HomePage> {
             ],
           );
         });
+
+    return result ?? false;
   }
 }

@@ -12,7 +12,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -21,7 +21,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final routerDelegate = Get.put(MyRouterDelegate());
 
-  StreamSubscription _linkSubscription;
+  StreamSubscription? _linkSubscription;
 
   @override
   void initState() {
@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
-    _linkSubscription.cancel();
+    _linkSubscription?.cancel();
     super.dispose();
   }
 
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
     _linkSubscription = uriLinkStream.listen((uri) {
       if (!mounted) return;
 
-      routerDelegate.parseRoute(uri);
+      routerDelegate.parseRoute(uri!);
     }, onError: (error) => error.printError());
   }
 

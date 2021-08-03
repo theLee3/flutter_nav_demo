@@ -5,18 +5,18 @@ import '../services/api.dart';
 class RecipePage extends StatefulWidget {
   final Map<String, String> _arguments;
 
-  const RecipePage(this._arguments, {Key key}) : super(key: key);
+  const RecipePage(this._arguments, {Key? key}) : super(key: key);
 
   @override
   _RecipePageState createState() => _RecipePageState();
 }
 
 class _RecipePageState extends State<RecipePage> {
-  Cocktail _cocktail;
+  Cocktail? _cocktail;
 
   @override
   void initState() {
-    Api.fetchRecipe(widget._arguments['id'])
+    Api.fetchRecipe(widget._arguments['id']!)
         .then((cocktail) => setState(() => _cocktail = cocktail));
     super.initState();
   }
@@ -24,13 +24,13 @@ class _RecipePageState extends State<RecipePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _cocktail != null && _cocktail.id == '-1'
+      appBar: _cocktail != null && _cocktail!.id == '-1'
           ? AppBar(
               title: const Text('404'),
             )
           : null,
       body: _cocktail != null
-          ? _cocktail.id == '-1'
+          ? _cocktail!.id == '-1'
               ? const Center(child: Text('Recipe not found.'))
               : CustomScrollView(
                   slivers: [
@@ -50,10 +50,10 @@ class _RecipePageState extends State<RecipePage> {
                               ],
                             ),
                           ),
-                          child: Image.network(_cocktail.thumbUrl,
+                          child: Image.network(_cocktail!.thumbUrl,
                               fit: BoxFit.cover),
                         ),
-                        title: Text(_cocktail.name),
+                        title: Text(_cocktail!.name),
                       ),
                     ),
                     const SliverToBoxAdapter(
@@ -68,13 +68,14 @@ class _RecipePageState extends State<RecipePage> {
                       itemExtent: 50.0,
                       delegate: SliverChildBuilderDelegate(
                         (context, index) => ListTile(
-                          title: Text(
-                              _cocktail.ingredients[index]['ingredient'] ?? ''),
-                          subtitle: Text(_cocktail.ingredients[index]
+                          title: Text(_cocktail!.ingredients[index]
+                                  ['ingredient'] ??
+                              ''),
+                          subtitle: Text(_cocktail!.ingredients[index]
                                   ['measurement'] ??
                               ''),
                         ),
-                        childCount: _cocktail.ingredients.length,
+                        childCount: _cocktail!.ingredients.length,
                       ),
                     ),
                     const SliverToBoxAdapter(
@@ -90,7 +91,7 @@ class _RecipePageState extends State<RecipePage> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Text(
-                          _cocktail.instructions,
+                          _cocktail!.instructions,
                           softWrap: true,
                           style: Theme.of(context).textTheme.subtitle1,
                         ),

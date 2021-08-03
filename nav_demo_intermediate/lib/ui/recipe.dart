@@ -5,14 +5,14 @@ import '../services/api.dart';
 class RecipePage extends StatefulWidget {
   final String _id;
 
-  const RecipePage(this._id, {Key key}) : super(key: key);
+  const RecipePage(this._id, {Key? key}) : super(key: key);
 
   @override
   _RecipePageState createState() => _RecipePageState();
 }
 
 class _RecipePageState extends State<RecipePage> {
-  Cocktail _cocktail;
+  Cocktail? _cocktail;
 
   @override
   void initState() {
@@ -44,9 +44,9 @@ class _RecipePageState extends State<RecipePage> {
                         ),
                       ),
                       child:
-                          Image.network(_cocktail.thumbUrl, fit: BoxFit.cover),
+                          Image.network(_cocktail!.thumbUrl, fit: BoxFit.cover),
                     ),
-                    title: Text(_cocktail.name),
+                    title: Text(_cocktail!.name),
                   ),
                 ),
                 const SliverToBoxAdapter(
@@ -62,11 +62,11 @@ class _RecipePageState extends State<RecipePage> {
                   delegate: SliverChildBuilderDelegate(
                     (context, index) => ListTile(
                       title: Text(
-                          _cocktail.ingredients[index]['ingredient'] ?? ''),
+                          _cocktail!.ingredients[index]['ingredient'] ?? ''),
                       subtitle: Text(
-                          _cocktail.ingredients[index]['measurement'] ?? ''),
+                          _cocktail!.ingredients[index]['measurement'] ?? ''),
                     ),
-                    childCount: _cocktail.ingredients.length,
+                    childCount: _cocktail!.ingredients.length,
                   ),
                 ),
                 const SliverToBoxAdapter(
@@ -82,7 +82,7 @@ class _RecipePageState extends State<RecipePage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      _cocktail.instructions,
+                      _cocktail!.instructions,
                       softWrap: true,
                       style: Theme.of(context).textTheme.subtitle1,
                     ),

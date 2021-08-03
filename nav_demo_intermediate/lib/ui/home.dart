@@ -8,7 +8,7 @@ import '../router/delegate.dart';
 import '../services/api.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   final routerDelegate = Get.find<MyRouterDelegate>();
 
   List<String> _categories = [];
-  List<Cocktail> _cocktails;
+  List<Cocktail>? _cocktails;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                     },
                   ))
           : GridView.builder(
-              itemCount: _cocktails.length,
+              itemCount: _cocktails!.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, childAspectRatio: 1.0),
               itemBuilder: (context, index) => InkWell(
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      child: Image.network(_cocktails[index].thumbUrl,
+                      child: Image.network(_cocktails![index].thumbUrl,
                           fit: BoxFit.cover, scale: 0.5),
                     ),
                     Padding(
@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                         alignment: Alignment.bottomCenter,
                         child: FittedBox(
                             child: Text(
-                          _cocktails[index].name,
+                          _cocktails![index].name,
                           style: const TextStyle(color: Colors.white),
                         )),
                       ),
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 onTap: () => routerDelegate.pushPage(
-                    name: '/recipe', arguments: _cocktails[index].id),
+                    name: '/recipe', arguments: _cocktails![index].id),
               ),
             ),
     );

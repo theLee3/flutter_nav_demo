@@ -34,7 +34,7 @@ abstract class Api {
 
     if (response.statusCode != 200) throw Exception('Failed to get recipe');
 
-    final cocktail = (jsonDecode(response.body)['drinks'] as List)?.first;
+    final cocktail = (jsonDecode(response.body)['drinks'] as List).first;
 
     return Cocktail.fromJson(cocktail);
   }

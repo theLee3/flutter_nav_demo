@@ -75,7 +75,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
     notifyListeners();
   }
 
-  void pushPage({@required String name, dynamic arguments}) {
+  void pushPage({required String name, dynamic arguments}) {
     _pages.add(_createPage(RouteSettings(name: name, arguments: arguments)));
     notifyListeners();
   }
@@ -88,7 +88,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
         child = const HomePage();
         break;
       case '/recipe':
-        child = RecipePage(routeSettings.arguments);
+        child = RecipePage(routeSettings.arguments! as Map<String, String>);
         break;
       default:
         child = Scaffold(
@@ -99,15 +99,15 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
 
     return MaterialPage(
       child: child,
-      key: Key(routeSettings.toString()),
+      key: Key(routeSettings.toString()) as LocalKey,
       name: routeSettings.name,
       arguments: routeSettings.arguments,
     );
   }
 
-  Future<bool> _confirmAppExit() {
-    return showDialog<bool>(
-        context: navigatorKey.currentContext,
+  Future<bool> _confirmAppExit() async {
+    final result = await showDialog<bool>(
+        context: navigatorKey!.currentContext!,
         builder: (context) {
           return AlertDialog(
             title: const Text('Exit App'),
@@ -124,5 +124,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
             ],
           );
         });
+
+    return result ?? true;
   }
 }

@@ -10,7 +10,7 @@ void main() {
 class MyApp extends StatelessWidget {
   final routerDelegate = Get.put(MyRouterDelegate());
 
-  MyApp({Key key}) : super(key: key) {
+  MyApp({Key? key}) : super(key: key) {
     routerDelegate.pushPage(name: '/');
   }
 

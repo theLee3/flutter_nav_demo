@@ -7,7 +7,7 @@ class MyRouteInformationParser
   @override
   Future<List<RouteSettings>> parseRouteInformation(
       RouteInformation routeInformation) {
-    final uri = Uri.parse(routeInformation.location);
+    final uri = Uri.parse(routeInformation.location!);
 
     if (uri.pathSegments.isEmpty) {
       return Future.value([const RouteSettings(name: '/')]);
