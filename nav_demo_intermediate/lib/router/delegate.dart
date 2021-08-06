@@ -8,7 +8,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
   final _pages = <Page>[];
 
   @override
-  get navigatorKey => GlobalKey<NavigatorState>();
+  final navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {

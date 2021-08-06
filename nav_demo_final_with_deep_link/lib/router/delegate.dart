@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../router/transition_delegate.dart';
 import '../ui/home.dart';
@@ -17,11 +16,10 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      key: navigatorKey,
-      pages: List.of(_pages),
-      onPopPage: _onPopPage,
-      transitionDelegate: const MyTransitionDelegate(),
-    );
+        key: navigatorKey,
+        pages: List.of(_pages),
+        onPopPage: _onPopPage,
+        transitionDelegate: const MyTransitionDelegate());
   }
 
   @override

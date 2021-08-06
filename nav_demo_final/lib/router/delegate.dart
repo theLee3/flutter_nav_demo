@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../router/transition_delegate.dart';
 import '../ui/home.dart';
@@ -9,7 +8,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
   final _pages = <Page>[];
 
   @override
-  get navigatorKey => GlobalKey<NavigatorState>();
+  final navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   List<Page> get currentConfiguration => List.of(_pages);

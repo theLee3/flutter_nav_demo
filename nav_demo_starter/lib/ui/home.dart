@@ -34,9 +34,11 @@ class _HomePageState extends State<HomePage> {
           title: const Text('Navigator 2.0 Demo'),
           leading: _cocktails != null
               ? IconButton(
-                  icon: const Icon(kIsWeb || Platform.isIOS
-                      ? Icons.arrow_back_ios
-                      : Icons.arrow_back),
+                  icon: kIsWeb
+                      ? const Icon(Icons.arrow_back_ios)
+                      : Icon(Platform.isIOS
+                          ? Icons.arrow_back_ios
+                          : Icons.arrow_back),
                   onPressed: () => setState(() => _cocktails = null),
                 )
               : null,
