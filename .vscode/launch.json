@@ -8,25 +8,36 @@
             "name": "nav_demo_starter",
             "request": "launch",
             "type": "dart",
-            "program": "nav_demo_starter/lib/main.dart"
+            "cwd": "nav_demo_starter",
+            "program": "lib/main.dart"
         },
         {
             "name": "nav_demo_intermediate",
             "request": "launch",
             "type": "dart",
-            "program": "nav_demo_intermediate/lib/main.dart"
+            "cwd": "nav_demo_intermediate",
+            "program": "lib/main.dart"
         },
         {
             "name": "nav_demo_final",
             "request": "launch",
             "type": "dart",
-            "program": "nav_demo_final/lib/main.dart"
+            "cwd": "nav_demo_final",
+            "program": "lib/main.dart"
         },
         {
             "name": "nav_demo_final_with_deep_link",
             "request": "launch",
             "type": "dart",
-            "program": "nav_demo_final_with_deep_link/lib/main.dart"
+            "cwd": "nav_demo_final_with_deep_link",
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "nav_demo_final_with_custom_transtions",
+            "request": "launch",
+            "type": "dart",
+            "cwd": "nav_demo_final_with_custom_transitions",
+            "program": "lib/main.dart"
         }
     ]
 }
